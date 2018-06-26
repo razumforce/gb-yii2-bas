@@ -10,6 +10,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
+use yii\db\Query;
+
 class SiteController extends Controller
 {
     /**
@@ -124,5 +126,56 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+
+    public function actionDao() {
+        $queryRows = (new Query())
+            ->select(['CONCAT(id, " - ", fio) AS full_data', 'login AS login_user', 'password'])
+            ->from('user')
+            // ->where('id = :myId OR login = :myLogin', [':myId' => 2, ':myLogin' => 'xxx127'])
+            // ->limit(2)
+            ->all();
+
+        $queryRowsCount = (new Query())
+            ->select('COUNT(*) AS count')
+            ->from('user')
+            ->all();
+
+        return $this->render('dao', [
+            'queryRows' => $queryRows,
+            'queryRowsCount' => $queryRowsCount
+        ]);
+    }
+
+
+    public function actionSql() {
+        $sql = 'SELECT * FROM user';
+        $sqlCount = 'SELECT COUNT(*) FROM user';
+        $sqlWithParams = 'SELECT * FROM user WHERE id = :myId';
+
+        // $queryRows = Yii::$app->db->createCommand($sql)->queryAll();
+        // $queryRows = Yii::$app->db->createCommand($sql)->queryOne();
+
+        // $queryRows = Yii::$app->db->createCommand($sqlCount)->queryScalar();
+
+        $queryRows = Yii::$app->db->createCommand($sqlWithParams)
+            ->bindValue(':myId', 2)
+            ->queryAll();
+
+        return $this->render('sql', [
+            'queryRows' => $queryRows
+        ]);
+    }
+
+
+    public function actionAdduser() {
+        Yii::$app->db->createCommand()->insert('user', [
+            'login' => 'myinsert',
+            'password' => '1234',
+            'email' => 'test@test.tt',
+            'fio' => 'My Insert',
+            'description' => 'sdfsdfa asdf asfsdf'
+        ])->execute();
     }
 }
