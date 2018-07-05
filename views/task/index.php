@@ -5,6 +5,8 @@ use yii\helpers\Url;
 
 ?>
 
+<?php echo $this->render('_calendarperiod', ['modelPeriod' => $modelPeriod]); ?>
+
 <table class="table table-bordered">
   <tr>
     <th>Дата</th>

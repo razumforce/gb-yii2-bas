@@ -7,19 +7,29 @@ use app\models\Task;
 use app\models\TaskSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
+use app\models\CalendarperiodForm;
 
-/**
- * UserController implements the CRUD actions for UserProfile model.
- */
+
 class TaskController extends Controller
 {
     public function actionIndex()
     {
         $model = new Task();
-        $tasks = $model->getDaysAndEvents();
+        $modelPeriod = new CalendarperiodForm();
+
+        $formMonth = null;
+        $formYear = null;
+
+        if ($modelPeriod->load(Yii::$app->request->post())) {
+            $formMonth = $modelPeriod->month;
+            $formYear = $modelPeriod->year;
+        }
+
+        $tasks = $model->getDaysAndEvents(0, $formMonth, $formYear);
 
         return $this->render('index', [
-            'tasks' => $tasks
+            'tasks' => $tasks,
+            'modelPeriod' => $modelPeriod
         ]);
     }
 
