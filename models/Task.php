@@ -71,9 +71,9 @@ class Task extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getDaysAndEvents($id = null, $idMonth = null, $idYear = null)
+    public function getDaysAndEvents($idMonth, $idYear)
     {
-        $daysInMonth = date('t');
+        $daysInMonth = date('t', mktime(0, 0, 0, $idMonth, 1, $idYear));
 
         for ($i = 0; $i < $daysInMonth; $i++)
         {

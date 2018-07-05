@@ -17,15 +17,18 @@ class TaskController extends Controller
         $model = new Task();
         $modelPeriod = new CalendarperiodForm();
 
-        $formMonth = null;
-        $formYear = null;
+        $formMonth = date('n');
+        $formYear = date('Y');
+
+        $modelPeriod->month = $formMonth; // не совсем уверен, верно ли так устанавливать по умолчанию значение полей в форме
+        $modelPeriod->year = $formYear;
 
         if ($modelPeriod->load(Yii::$app->request->post())) {
             $formMonth = $modelPeriod->month;
             $formYear = $modelPeriod->year;
         }
 
-        $tasks = $model->getDaysAndEvents(0, $formMonth, $formYear);
+        $tasks = $model->getDaysAndEvents($formMonth, $formYear);
 
         return $this->render('index', [
             'tasks' => $tasks,

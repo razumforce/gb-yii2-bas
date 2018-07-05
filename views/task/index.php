@@ -15,7 +15,7 @@ use yii\helpers\Url;
   </tr>
   <?php foreach ($tasks as $day => $events): ?>
   <tr class="td-date">
-    <td><span class="label label-success"><?= $day; ?></span></td>
+    <td><span class="label label-success"><?= $day + 1; ?></span></td>
     <td>
       <?= (count($events) > 0) ? 
         '<p>' . $events[0]->title . '</p><p class="small">' .
