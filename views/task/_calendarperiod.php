@@ -5,7 +5,7 @@ use yii\helpers\Html;
 ?>
 
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-2">
     <?php $formPeriod = ActiveForm::begin(); ?>
     <div>
       <?= $formPeriod->field($modelPeriod, 'month')->textInput() ?>
