@@ -41,10 +41,18 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'DZ4 List', 'url' => ['/giitest/list']],
-            ['label' => 'DZ4 Add', 'url' => ['/giitest/order']],
             ['label' => 'User', 'url' => ['/user']],
-            ['label' => 'ORDER MOD', 'url' => ['/admin/order/index']],
+            ['label' => 'DZ4', 'items' => [
+                ['label' => 'DZ4 List', 'url' => ['/giitest/list']],
+                ['label' => 'DZ4 Add', 'url' => ['/giitest/order']]
+            ]],
+            ['label' => 'DZ5', 'items' => [
+                ['label' => 'DZ5 Calendar', 'url' => ['/task/index']]
+            ]],
+            ['label' => 'ADMIN', 'items' => [
+                ['label' => 'DZ4 ORDER', 'url' => ['/admin/order/index']],
+                ['label' => 'DZ5 TASK', 'url' => ['/admin/task/index']]
+            ]],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

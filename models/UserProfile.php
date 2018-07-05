@@ -66,6 +66,15 @@ class UserProfile extends \yii\db\ActiveRecord implements \yii\web\IdentityInter
     }
 
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTasks()
+    {
+        return $this->hasMany(Task::className(), ['user_id' => 'id']);
+    }
+
+
     public function afterFind() {
         // echo 'afterFind()';
 
