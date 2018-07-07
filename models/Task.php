@@ -73,7 +73,7 @@ class Task extends \yii\db\ActiveRecord
 
     public function getDaysAndEvents($idMonth, $idYear)
     {
-        $cache = Yii::$app->cache;
+        $cache = Yii::$app->cache2;
 
         return $cache->getOrSet('eventmodel', function() use($idMonth, $idYear) {
           $daysInMonth = date('t', mktime(0, 0, 0, $idMonth, 1, $idYear));
