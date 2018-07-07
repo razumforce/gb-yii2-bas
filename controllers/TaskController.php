@@ -14,7 +14,7 @@ class TaskController extends Controller
 {
     public function actionIndex()
     {
-        $cache = Yii::$app->cache;
+        $cache = Yii::$app->cache2;
 
         $model = new Task();
         $modelPeriod = new CalendarperiodForm();

@@ -27,8 +27,8 @@ $config = [
             'keyPrefix' => 'ch1_'
         ],
         'cache2' => [
-            // 'class' => 'yii\caching\DummyCache',
-            'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\DummyCache',
+            // 'class' => 'yii\caching\FileCache',
         ],
         'user' => [
             'identityClass' => 'app\models\UserProfile',
