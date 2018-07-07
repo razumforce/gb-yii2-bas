@@ -23,6 +23,12 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+            'defaultDuration' => 5,
+            'keyPrefix' => 'ch1_'
+        ],
+        'cache2' => [
+            // 'class' => 'yii\caching\DummyCache',
+            'class' => 'yii\caching\FileCache',
         ],
         'user' => [
             'identityClass' => 'app\models\UserProfile',
@@ -48,14 +54,14 @@ $config = [
             ],
         ],
         'db' => $db,
-        
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        
+
     ],
     'params' => $params,
 ];
