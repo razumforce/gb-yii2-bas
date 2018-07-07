@@ -11,7 +11,7 @@ use yii\helpers\Html;
       <?= $formPeriod->field($modelPeriod, 'month')->textInput() ?>
     </div>
     <div>
-      <?= $formPeriod->field($modelPeriod, 'year')->textInput(['value' => date('Y')]) ?>
+      <?= $formPeriod->field($modelPeriod, 'year')->textInput() ?>
     </div>
     <div>
       <?= Html::submitButton('Показать события', [

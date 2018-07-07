@@ -14,13 +14,15 @@ class TaskController extends Controller
 {
     public function actionIndex()
     {
+        $cache = Yii::$app->cache;
+
         $model = new Task();
         $modelPeriod = new CalendarperiodForm();
 
         $formMonth = date('n');
         $formYear = date('Y');
 
-        $modelPeriod->month = $formMonth; // не совсем уверен, верно ли так устанавливать по умолчанию значение полей в форме
+        $modelPeriod->month = $formMonth;
         $modelPeriod->year = $formYear;
 
         if ($modelPeriod->load(Yii::$app->request->post())) {
@@ -28,7 +30,9 @@ class TaskController extends Controller
             $formYear = $modelPeriod->year;
         }
 
-        $tasks = $model->getDaysAndEvents($formMonth, $formYear);
+        $tasks = $cache->getOrSet('event', function() use($model, $formMonth, $formYear) {
+          return $model->getDaysAndEvents($formMonth, $formYear);
+        }, 15);
 
         return $this->render('index', [
             'tasks' => $tasks,
