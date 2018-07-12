@@ -13,20 +13,20 @@ use app\models\CalendarperiodForm;
 class TaskController extends Controller
 {
 
-    public function behaviors()
-    {
-      return [
-        'myCache' => [
-          'class' => 'yii\filters\PageCache',
-          'duration' => 20,
-          'only' => ['index'],
-        ]
-      ];
-    }
+    // public function behaviors()
+    // {
+    //   return [
+    //     'myCache' => [
+    //       'class' => 'yii\filters\PageCache',
+    //       'duration' => 20,
+    //       'only' => ['index'],
+    //     ]
+    //   ];
+    // }
 
     public function actionIndex()
     {
-        $cache = Yii::$app->cache2;
+        $cache = Yii::$app->cache2; // cach2 = DummyCache
 
         $model = new Task();
         $modelPeriod = new CalendarperiodForm();
