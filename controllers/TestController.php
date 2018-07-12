@@ -77,4 +77,12 @@ class TestController extends Controller {
     ]);
   }
 
+  public function actionWidget1() {
+    return $this->render('widget1');
+  }
+
+  public function actionWidget2() {
+    return $this->render('widget2');
+  }
+
 }
