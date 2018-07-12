@@ -19,7 +19,9 @@ class FirstWidget extends Widget
 
   public function run()
   {
-    return '<h3>' . Html::encode($this->message) . '</h3>';
+    return $this->render('firstwidget', [
+      'message' => $this->message
+    ]);
   }
 
 }
