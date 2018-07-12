@@ -42,6 +42,7 @@ AppAsset::register($this);
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'User', 'url' => ['/user']],
+            ['label' => 'DZ7', 'url' => ['/test/tabs']],
             ['label' => 'DZ4', 'items' => [
                 ['label' => 'DZ4 List', 'url' => ['/giitest/list']],
                 ['label' => 'DZ4 Add', 'url' => ['/giitest/order']]
