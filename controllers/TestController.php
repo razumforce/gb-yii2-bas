@@ -48,6 +48,27 @@ class TestController extends Controller {
       [
         'label' => 'Third Tab',
         'content' => 'third tab content'
+      ],
+      [
+        'label' => 'Dropdown',
+        'items' => [
+          [
+            'label' => 'Tab A',
+            'content' => 'tab a content'
+          ],
+          [
+            'label' => 'Tab B',
+            'content' => 'tab b content'
+          ],
+          [
+            'label' => 'Tab C',
+            'content' => 'tab c content'
+          ]
+        ]
+      ],
+      [
+        'label' => 'Main page',
+        'url' => '/'
       ]
     ];
 
