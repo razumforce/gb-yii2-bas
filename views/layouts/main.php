@@ -50,6 +50,7 @@ AppAsset::register($this);
             ['label' => 'DZ5', 'items' => [
                 ['label' => 'DZ5 Calendar', 'url' => ['/task/index']]
             ]],
+            ['label' => 'DZ8', 'url' => ['/log/index']],
             ['label' => 'ADMIN', 'items' => [
                 ['label' => 'DZ4 ORDER', 'url' => ['/admin/order/index']],
                 ['label' => 'DZ5 TASK', 'url' => ['/admin/task/index']]

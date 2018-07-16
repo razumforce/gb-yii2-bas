@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\StatLogin;
 
 use yii\db\Query;
 
@@ -79,7 +80,16 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            // if login successfull
+            // logging into StatLogin
+            $stat = new StatLogin();
+            $stat->login = $model->username;
+            $stat->time = time();
+
+            if ($stat->save()) {
+              return $this->goBack();
+            }
+
         }
 
         $model->password = '';
