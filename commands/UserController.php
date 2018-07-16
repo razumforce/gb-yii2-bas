@@ -12,8 +12,10 @@ class UserController extends Controller
 
     public function actionClear()
     {
-        StatLogin::deleteAll();
-        echo 'Таблица полностью очищена' . PHP_EOL;
+        $deleteTime = time() - 180;
+
+        StatLogin::deleteAll('time < :time', [':time' => $deleteTime]);
+        echo 'Все записи более чем 180 секунд назад - очищены' . PHP_EOL;
 
         return ExitCode::OK;
     }
