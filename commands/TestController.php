@@ -6,6 +6,10 @@ use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\helpers\Console;
 
+/**
+* Test class.
+*
+*/
 
 class TestController extends Controller
 {
@@ -35,6 +39,13 @@ class TestController extends Controller
 
         return ExitCode::OK;
     }
+
+    /**
+    * test info method
+    * @param string $message Message to display
+    *
+    *
+    */
 
     public function actionInfo($message = '***')
     {
